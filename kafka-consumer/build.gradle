@@ -1,0 +1,23 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'java'
+}
+
+group = 'org.vsanyc.microservices.zoo.kafka.consumer'
+version='0.0.1'
+
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral();
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile 'io.springfox:springfox-swagger2:2.9.2'
+    compile 'io.springfox:springfox-swagger-ui:2.9.2'
+}
+
+
+

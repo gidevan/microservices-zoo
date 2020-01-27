@@ -1,0 +1,4 @@
+rootProject.name='microservices.zoo'
+
+include 'kafka-consumer'
+include 'kafka-producer'
