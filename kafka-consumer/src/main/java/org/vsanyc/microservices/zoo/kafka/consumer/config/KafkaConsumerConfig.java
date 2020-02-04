@@ -19,4 +19,6 @@ public class KafkaConsumerConfig {
                 .paths(PathSelectors.any())
                 .build();
     }
+
+
 }
