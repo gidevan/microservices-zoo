@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.vsanyc.microservices.zoo.kafka.consumer.service.KafkaConsumerService;
 
+import java.util.List;
+
 @RestController
 public class KafkaConsumerController {
 
@@ -16,5 +18,10 @@ public class KafkaConsumerController {
     @GetMapping("/info")
     public String getConsumerInfo() {
         return kafkaConsumerService.getConsumerInfo();
+    }
+
+    @GetMapping("/messages")
+    public List<String> getReceivedMessages() {
+        return kafkaConsumerService.getReceivedMessages();
     }
 }
