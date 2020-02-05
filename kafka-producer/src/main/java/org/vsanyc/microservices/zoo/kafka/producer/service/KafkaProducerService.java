@@ -1,5 +1,6 @@
 package org.vsanyc.microservices.zoo.kafka.producer.service;
 
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -24,8 +25,7 @@ public class KafkaProducerService {
     }
 
     public void sendMessage(String message) {
-        ListenableFuture<SendResult<String, String>> future =
-                kafkaTemplate.send(topicName, message);
+        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topicName, message);
 
         future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
@@ -38,6 +38,24 @@ public class KafkaProducerService {
             public void onFailure(Throwable ex) {
                 System.out.println("Unable to send message=["
                         + message + "] due to : " + ex.getMessage());
+            }
+        });
+    }
+
+    public void sendProducerRecordData(String key, String value) {
+        ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topicName, key, value);
+        ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(producerRecord);
+        future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
+            @Override
+            public void onFailure(Throwable ex) {
+                System.out.println("Unable to send record =[] due to : " + ex.getMessage());
+            }
+
+            @Override
+            public void onSuccess(SendResult<String, String> result) {
+                ProducerRecord<String, String> record = result.getProducerRecord();
+                System.out.println("Sent producer record=[" + record.key() + ":" + record.value()
+                        + "] with offset=[" + result.getRecordMetadata().offset() + "]");
             }
         });
     }
