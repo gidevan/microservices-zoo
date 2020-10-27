@@ -1,0 +1,35 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'java'
+}
+
+group = 'org.vsanyc.microservices.zoo.simple.microservice'
+version='0.0.1'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral();
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile 'io.springfox:springfox-swagger2:2.9.2'
+    compile 'io.springfox:springfox-swagger-ui:2.9.2'
+}
+
+task createDockerImage (type:Exec) {
+
+    commandLine 'mkdir build/dependency'
+    commandLine 'cd build/dependency'
+    //commandLine 'jar -xf ../*.jar'
+    //commandLine 'docker' build -t myorg/myapp .
+
+    //store the output instead of printing to the console:
+    standardOutput = new ByteArrayOutputStream()
+
+    //extension method stopTomcat.output() can be used to obtain the output:
+    ext.output = {
+        return standardOutput.toString()
+    }
+}
