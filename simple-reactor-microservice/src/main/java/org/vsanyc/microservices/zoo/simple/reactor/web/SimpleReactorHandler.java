@@ -13,4 +13,9 @@ public class SimpleReactorHandler {
         return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
                 .body(BodyInserters.fromValue("Hello, Spring! Simple reactor microservice"));
     }
+
+    public Mono<ServerResponse> system(ServerRequest request) {
+        return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
+                .body(BodyInserters.fromValue("System call"));
+    }
 }

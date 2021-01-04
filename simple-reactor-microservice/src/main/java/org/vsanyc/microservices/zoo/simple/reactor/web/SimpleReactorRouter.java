@@ -15,6 +15,8 @@ public class SimpleReactorRouter {
     public RouterFunction<ServerResponse> route(SimpleReactorHandler greetingHandler) {
         return RouterFunctions
                 .route(RequestPredicates.GET("/hello")
-                        .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), greetingHandler::hello);
+                        .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), greetingHandler::hello)
+                .andRoute(RequestPredicates.GET("/system")
+                        .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), greetingHandler::system);
     }
 }
