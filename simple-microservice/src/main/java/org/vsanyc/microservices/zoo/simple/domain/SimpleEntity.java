@@ -4,6 +4,14 @@ public class SimpleEntity {
     private String id;
     private String entityName;
 
+    public SimpleEntity() {
+    }
+
+    public SimpleEntity(String id, String entityName) {
+        this.id = id;
+        this.entityName = entityName;
+    }
+
     public String getId() {
         return id;
     }

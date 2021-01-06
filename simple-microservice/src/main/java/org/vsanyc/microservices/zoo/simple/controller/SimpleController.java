@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.vsanyc.microservices.zoo.simple.domain.SimpleDto;
+import org.vsanyc.microservices.zoo.simple.domain.SimpleEntity;
 import org.vsanyc.microservices.zoo.simple.service.SimpleService;
+
+import java.util.List;
 
 
 @RestController
@@ -27,8 +30,18 @@ public class SimpleController {
         return INSTANCE_VALUE_MSG + instanceValue;
     }
 
-    @GetMapping("/entity")
+    @GetMapping("/entity/dto")
     public SimpleDto getSimpleDto() {
         return simpleService.getSimpleDto();
+    }
+
+    @GetMapping("/entity/{id}")
+    public SimpleEntity getSimpleEntity(String id) {
+        return simpleService.getSimpleEntityById(id);
+    }
+
+    @GetMapping("/entity")
+    public List<SimpleEntity> getSimpleEntities() {
+        return simpleService.getSimpleEntities();
     }
 }
