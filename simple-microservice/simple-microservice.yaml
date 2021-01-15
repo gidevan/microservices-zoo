@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-microservice-pod-manual
+spec:
+  containers:
+  - image: vsanyc/simple-microservice
+    name: simple-microservice
+    ports:
+    - containerPort: 8080
+      protocol: TCP
