@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'org.vsanyc.microservices.zoo.simple.sqs.producer'
+group = 'org.vsanyc.microservices.zoo.simple.sqs.consumer'
 version='0.0.1'
 sourceCompatibility = '1.8'
 
@@ -19,7 +19,6 @@ dependencies {
     implementation platform ('software.amazon.awssdk:bom:2.15.15')
     implementation 'software.amazon.awssdk:sqs'
 
-    //compile 'io.springfox:springfox-boot-starter:3.0.0'
     compile 'io.springfox:springfox-swagger2:2.9.2'
     compile 'io.springfox:springfox-swagger-ui:2.9.2'
 
