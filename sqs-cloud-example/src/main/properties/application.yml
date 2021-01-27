@@ -1,0 +1,12 @@
+server:
+  port: 8083
+cloud:
+  aws:
+    region:
+      static: us-east-2
+      auto: false
+    credentials:
+      access-key: www
+      secret-key: www
+
+

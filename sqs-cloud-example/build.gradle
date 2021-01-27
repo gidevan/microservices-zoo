@@ -1,0 +1,34 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'java'
+}
+
+group = 'org.vsanyc.microservices.zoo.simple.sqs.cloud.example'
+version='0.0.1'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral();
+}
+
+ext {
+    set('springCloudVersion', "Hoxton.SR9")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws'
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws-messaging'
+    //implementation platform ('software.amazon.awssdk:bom:2.15.15')
+    //implementation 'software.amazon.awssdk:sqs'
+
+    compile 'io.springfox:springfox-swagger2:2.9.2'
+    compile 'io.springfox:springfox-swagger-ui:2.9.2'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
