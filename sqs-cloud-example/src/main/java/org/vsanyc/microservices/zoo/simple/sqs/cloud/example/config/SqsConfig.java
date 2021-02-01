@@ -22,8 +22,8 @@ public class SqsConfig {
     private String awsSecretKey;
 
     @Bean
-    public QueueMessagingTemplate queueMessagingTemplate() {
-        return new QueueMessagingTemplate(amazonSQSAsync());
+    public QueueMessagingTemplate queueMessagingTemplate(AmazonSQSAsync amazonSQSAsync) {
+        return new QueueMessagingTemplate(amazonSQSAsync);
     }
 
     @Bean

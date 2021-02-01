@@ -1,0 +1,12 @@
+server:
+  port: 8083
+
+cloud:
+  aws:
+    region:
+      static: us-east-2
+    credentials:
+      access-key: AKIAV37VHTVV73L42BCB
+      secret-key: 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
+
+queue: SimpleQueue
