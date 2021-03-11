@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
+    implementation 'com.amazonaws:aws-lambda-java-events:3.1.0'
+    implementation 'software.amazon.awssdk:s3:2.14.7'
+    runtimeOnly 'com.amazonaws:aws-lambda-java-log4j2:1.2.0'
+}
